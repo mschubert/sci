@@ -2,6 +2,12 @@
 # Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*bamtools-2.4.0 (14 Aug 2015)
+
+  14 Aug 2015; Michael Schubert <mschu.dev@gmail.com> +bamtools-2.4.0.ebuild,
+  +files/bamtools-2.3.0-unbundle.patch, bamtools-9999.ebuild:
+  sci-biology/bamtools: version bump; fix static libs
+
   05 Jun 2015; Justin Lecher <jlec@gentoo.org> metadata.xml:
   sci-biology/bamtools: Add github to remote-id in metadata.xml
 

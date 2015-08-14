@@ -1,19 +1,18 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=5
 
-inherit cmake-utils git-r3
+inherit cmake-utils
 
 DESCRIPTION="A programmer's API and an end-user's toolkit for handling BAM files"
 HOMEPAGE="https://github.com/pezmaster31/bamtools"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/pezmaster31/bamtools.git"
+SRC_URI="https://github.com/pezmaster31/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="static-libs"
 
 DEPEND="
@@ -21,7 +20,7 @@ DEPEND="
 	<dev-libs/jsoncpp-1.0"
 RDEPEND="${DEPEND}"
 
-#PATCHES=( "${FILESDIR}"/${PN}-2.3.0-unbundle.patch )
+PATCHES=( "${FILESDIR}"/${PN}-2.3.0-unbundle.patch )
 
 src_install() {
 	cmake-utils_src_install
