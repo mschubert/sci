@@ -1,0 +1,12 @@
+Include Snappy in the compression-library checks when using system Blosc.
+
+--- a/tests/test_blosc.py
++++ b/tests/test_blosc.py
+@@ -139,6 +139,7 @@ def test_compress_complib(use_threads):
+         'lz4': 'LZ4',
+         'lz4hc': 'LZ4',
+         'blosclz': 'BloscLZ',
++        'snappy': 'Snappy',
+         'zlib': 'Zlib',
+         'zstd': 'Zstd',
+     }
