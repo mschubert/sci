@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{12..13} )
+PYTHON_COMPAT=( python3_{12..15} )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1
@@ -12,10 +12,17 @@ DESCRIPTION="Create MPS/LP files, call solvers, and present results"
 HOMEPAGE="https://coin-or.github.io/pulp/"
 SRC_URI="https://github.com/coin-or/${PN}/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
-LICENSE="BSD-2"
-KEYWORDS="~amd64 ~x86"
+LICENSE="MIT"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
+RDEPEND="sci-libs/coinor-cbc"
+
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
-# ToDo: package theme
-#distutils_enable_sphinx doc/source dev-python/sphinx_glpi_theme
+
+python_prepare_all() {
+	# exclude installation of precompiled binaries
+	sed -i '/"pulp\.solverdir/d' pyproject.toml || die
+	distutils-r1_python_prepare_all
+}
